@@ -5,14 +5,15 @@
 <br>
 
 <label for="fighter_index_input">Fighter Option: </label>
-<input #fighter_index_input id="fighter_index_input" type="number" placeholder="fighter's id" value="{{getIndex()+1}}"/>
+<input #fighter_index_input id="fighter_index_input" type="number" placeholder="fighter's id" value="{{getIndex()+1}}" [disabled]="!getIsEnabled()"/>
+<input id="fighter_index_checkbox" type="checkbox" [checked]="getIsEnabled()" (click)="invertIsEnabled()"/>
 <br>
 <br>
 <input id="fighter_index_button" type="button" value="Search" (click)="updateIndex(fighter_index_input.value)"/>
 <br>
 <br>
 
-<div *ngIf="getClick() === true">
+<div *ngIf=" getIsEnabled() === true && getClick() === true">
     <span class="fighter" *ngIf="getFighterByIndex(getIndex()).name!=='undefined'">
         <h3>Welcome fighter</h3>&nbsp;
         {{getFighterByIndex(getIndex()).name}}

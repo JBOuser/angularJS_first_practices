@@ -1,0 +1,22 @@
+<label for="show_dataTable">Show DataTable with All Fighters</label>
+<input id="show_dataTable" type="checkbox" (click)="invertIsVisible()"/>
+
+<div *ngIf="getIsVisible() === true">
+    <h3>Fighters DataTable</h3>
+    <div class="card-container">
+        <table datatable [dtOptions]="dataTableData" class="row-border hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fighter of fightersLoaded">
+                    <td>{{fighter.name}}</td>
+                    <td>{{fighter.img}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

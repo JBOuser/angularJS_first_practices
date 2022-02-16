@@ -16,6 +16,7 @@ export class FighterComponent implements OnInit {
 
   private index:number = 0;
   private clicked:boolean=true;
+  private isEnabled:boolean=false;
   private fighters = [
     {
       name: "Kasumi",
@@ -82,5 +83,13 @@ export class FighterComponent implements OnInit {
 
   getIndex(){
     return this.index;
+  }
+
+  invertIsEnabled(){
+    this.isEnabled = !this.isEnabled;
+  }
+
+  getIsEnabled(){
+    return this.isEnabled;
   }
 }
