@@ -15,7 +15,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FighterComponent implements OnInit {
 
   private index:number = 0;
-  private clicked:boolean=false;
+  private clicked:boolean=true;
   private fighters = [
     {
       name: "Kasumi",
@@ -53,12 +53,18 @@ export class FighterComponent implements OnInit {
     let num = parseInt(i);
     if(typeof(num)!=='number'){
       //console.log(this.fighters[num]);
-      this.index = -1;
+      this.index = 0;
+      this.clicked = false;
     }
     else{
       num--;
-      this.index = (0 <= num && num < this.fighters.length) ?
-        num : 0 ;
+      if(0 <= num && num < this.fighters.length){
+        this.index = num;
+        this.clicked = true;
+      } else {
+        this.index = 0;
+        this.clicked = false;
+      }
     }
   }
 

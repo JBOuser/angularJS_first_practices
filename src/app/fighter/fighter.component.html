@@ -12,9 +12,11 @@
 <br>
 <br>
 
-<span class="fighter" *ngIf="getFighterByIndex(getIndex()).name!=='undefined'">
-    <h3>Welcome fighter</h3>&nbsp;
-    {{getFighterByIndex(getIndex()).name}}
-</span>
-<!-- <p class="image">{{getFighterByIndex(0).img.endsWith(".png") ? getFighterByIndex(0).img : "No image"}}</p> -->
+<div *ngIf="getClick() === true">
+    <span class="fighter" *ngIf="getFighterByIndex(getIndex()).name!=='undefined'">
+        <h3>Welcome fighter</h3>&nbsp;
+        {{getFighterByIndex(getIndex()).name}}
+    </span>
+    <!-- <p class="image">{{getFighterByIndex(0).img.endsWith(".png") ? getFighterByIndex(0).img : "No image"}}</p> -->
+</div>
     
