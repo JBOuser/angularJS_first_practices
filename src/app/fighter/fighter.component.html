@@ -1,0 +1,20 @@
+<span *ngFor="let fighter of getAllFighters(); let i = index">
+    <span id="fighter_{{i+1}}">{{i+1}}.{{getFighterByIndex(i).name}}</span><br>
+</span>
+<br>
+<br>
+
+<label for="fighter_index_input">Fighter Option: </label>
+<input #fighter_index_input id="fighter_index_input" type="number" placeholder="fighter's id" value="{{getIndex()+1}}"/>
+<br>
+<br>
+<input id="fighter_index_button" type="button" value="Search" (click)="updateIndex(fighter_index_input.value)"/>
+<br>
+<br>
+
+<span class="fighter" *ngIf="getFighterByIndex(getIndex()).name!=='undefined'">
+    <h3>Welcome fighter</h3>&nbsp;
+    {{getFighterByIndex(getIndex()).name}}
+</span>
+<!-- <p class="image">{{getFighterByIndex(0).img.endsWith(".png") ? getFighterByIndex(0).img : "No image"}}</p> -->
+    
