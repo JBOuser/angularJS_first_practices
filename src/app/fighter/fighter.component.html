@@ -13,11 +13,27 @@
 <br>
 <br>
 
-<div *ngIf=" getIsEnabled() === true && getClick() === true">
-    <span class="fighter" *ngIf="getFighterByIndex(getIndex()).name!=='undefined'">
+<div *ngIf=" getIsEnabled() === true && getIsMatched() === true">
+    <div *ngIf="getFighterByIndex(getIndex()).name!=='undefined'">
         <h3>Welcome fighter</h3>&nbsp;
-        {{getFighterByIndex(getIndex()).name}}
-    </span>
+        <span #fighter class="fighter">{{getFighterAttribute()}}</span>
+        <br><br>
+        <label for="idField">Id: </label>
+        <input type="radio" name="chooseField" value=1 id="field" (click)="updateRadioOption($event)"/>&nbsp;
+        <label for="nameField">Name: </label>
+        <input type="radio" name="chooseField" value=2 (click)="updateRadioOption($event)" />&nbsp;
+        <label for="imgField">Image: </label>
+        <input type="radio" name="chooseField" value=3 (click)="updateRadioOption($event)" />
+    </div>
     <!-- <p class="image">{{getFighterByIndex(0).img.endsWith(".png") ? getFighterByIndex(0).img : "No image"}}</p> -->
+    <br>
+    <br>
 </div>
-    
+
+<!--
+<div *ngIf=" getIsEnabled() === true && getIsMatched() !== true">
+    <div>
+        <h3>No fighter found</h3>&nbsp;
+    </div><br><br>
+</div>
+-->    

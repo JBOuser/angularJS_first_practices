@@ -6,13 +6,21 @@
     <div class="card-container">
         <table datatable [dtOptions]="dataTableData" class="row-border hover">
             <thead>
+                <!--
                 <tr>
                     <th>Name</th>
                     <th>Image</th>
                 </tr>
+                -->
+                <tr>
+                    <th *ngFor="let columnName of this.columnsNames">
+                        {{columnName}}
+                    </th>
+                </tr>
+
             </thead>
             <tbody>
-                <tr *ngFor="let fighter of fightersLoaded">
+                <tr *ngFor="let fighter of this.fightersLoaded">
                     <td>{{fighter.name}}</td>
                     <td>{{fighter.img}}</td>
                 </tr>

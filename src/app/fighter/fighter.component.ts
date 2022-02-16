@@ -15,7 +15,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FighterComponent implements OnInit {
 
   private index:number = 0;
-  private clicked:boolean=true;
+  private radioOption:number = 2;
+  private isMatched:boolean=true;
   private isEnabled:boolean=false;
   private fighters = [
     {
@@ -50,31 +51,53 @@ export class FighterComponent implements OnInit {
       this.fighters[index] : this.fighters[this.fighters.length]  
   }
 
+  getFighterAttribute(){
+    switch(this.radioOption){
+      case 1: 
+        return this.getIndex()+1;
+      case 2: 
+        return this.getFighterByIndex(this.getIndex()).name;
+      case 3: 
+        return this.getFighterByIndex(this.getIndex()).img;
+      default:
+        return this.getFighterByIndex(this.getIndex()).name;
+    }
+  }
+
   updateIndex(i:string){
     let num = parseInt(i);
     if(typeof(num)!=='number'){
       //console.log(this.fighters[num]);
       this.index = 0;
-      this.clicked = false;
+      this.isMatched = false;
     }
     else{
       num--;
       if(0 <= num && num < this.fighters.length){
         this.index = num;
-        this.clicked = true;
+        this.isMatched = true;
       } else {
         this.index = 0;
-        this.clicked = false;
+        this.isMatched = false;
       }
     }
   }
 
-  setClick(click_action:boolean){
-    this.clicked = click_action;
+  /**
+  updateRadioOption(option:number){
+    this.radioOption = option;
+  }
+  */
+  updateRadioOption(event:Event){
+    this.radioOption = parseInt((<HTMLInputElement>event.target).value);
   }
 
-  getClick(){
-    return this.clicked;
+  setIsMatched(click_action:boolean){
+    this.isMatched = click_action;
+  }
+
+  getIsMatched(){
+    return this.isMatched;
   }
 
   setIndex(i:number){
